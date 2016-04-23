@@ -40,4 +40,8 @@ names(y_allnamed)<-c("activitycode","activity")
 
 combined<-cbind(subject_all,activity=y_allnamed[,-1],x_select)
 
+final<-summarise_each(group_by(combined,subject,activity),funs(mean))
+
+write.table(x = final,file = "tidydata.txt",row.name=FALSE)
+
 setwd( "..")
