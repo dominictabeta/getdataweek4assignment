@@ -15,7 +15,7 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 # Selected features in the tidy data set
 
-These signals are the selected features in the tidy data set:  
+These are the selected features in the tidy data set:  
 '-X','-Y' and '-Z' are used to denote axial signals in the X, Y and Z directions.
 
  [1] "tBodyAcc-mean()-X"              
@@ -100,5 +100,8 @@ These signals are the selected features in the tidy data set:
 
 # Data tidying process
 
-First the X and Y training and test data files, as well as the subject order were read into
+First the X and Y training and test data files, as well as the subject order were read into dataframes. In addition the list of measures is read into a dataframe. To select only the mean and standard deviation measures from the full list of measured features, I filtered for measure names containing either the character string "std" or "mean", reducing the list of selected features from 561 to 79. THe next step was to replace the activity codes in the "Y" dataframe to meaningful text descriptions of the activities. This was done by using the merge function on the "Y" dataframe and the dataframe read from the file "activity_labels.txt". 
+
+After applying descriptive names for the columns, the X, Y, subject, and activity dataframes were combined using the"cbind" command into a dataframe named "combined". The final step to produce the tidy data set as per assignment instructions was to group the dataframe by "subject" and "activity", then calling the function summarise_each() function on this grouped dataframe, with "funs(mean)" as the second argument to call the mean() function for each measure, for each subject-activity group. Finally this tidy data set was written to the file "tidydata.txt".
+
 

@@ -32,7 +32,7 @@ setwd( "..")
 selectmeasures <- readmeasures[grepl("mean",readmeasures$V2) | grepl("std",readmeasures$V2),]
 x_select<-x_all[,selectmeasures$V1]
 
-# Apply the selected merasure names to the selected columns in X
+# Apply the selected measure names to the selected columns in X
 names(x_select)<-selectmeasures$V2
 
 # Provide the "subject" column name
